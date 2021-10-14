@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "../api/api";
 import JobCardList from "./JobCardList";
 
+import LoadingSpinner from "../common/LoadingSpinner";
+
 function Jobs () {
     
     const [jobs, setJobs] = useState([]);
@@ -9,6 +11,8 @@ function Jobs () {
     useEffect(function getJobs(){
         listJobs();
     }, []);
+
+    if(!jobs) return <LoadingSpinner />;
 
     async function listJobs(title) {
         let jobs = await JoblyApi.getJobs(title)
