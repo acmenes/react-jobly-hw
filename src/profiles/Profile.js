@@ -3,9 +3,8 @@ import Alert from "../common/Alert";
 import JoblyApi from "../api/api";
 import UserContext from "../auth/UserContext";
 
-
 function Profile () {
-    const { currentUser, setCurrentUser } = useContext(UserContext)
+    const { currentUser, setCurrentUser } = useContext(UserContext);
 
     const [formData, setFormData] = useState({
         firstName: currentUser.firstName,
@@ -14,6 +13,8 @@ function Profile () {
         username: currentUser.username,
         password: "",
     });
+
+    console.debug(currentUser)
     
     const [formErrors, setFormErrors] = useState([]);
 
@@ -69,7 +70,8 @@ function Profile () {
 
     return (
     <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-    <h3>Profile</h3>
+    <h2>Hello {currentUser.username}</h2>
+    <h3>Edit Your Profile</h3>
     <div className="card">
       <div className="card-body">
         <form>
