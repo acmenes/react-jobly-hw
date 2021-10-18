@@ -66,12 +66,12 @@ useEffect(function loadUserInfo() {
     try {
       let token = await JoblyApi.signup(signupData);
       setToken(token);
+      alert("you have been signed up")
       return { success: true };
     } catch (errors) {
       console.error("signup failed", errors);
       return { success: false, errors };
     }
-    alert("you have been signed up")
   }
 
   /** authenticate and log in a user */
@@ -79,12 +79,12 @@ useEffect(function loadUserInfo() {
     try {
       let token = await JoblyApi.login(loginData);
       setToken(token);
+      alert("logged in")
       return { success: true };
     } catch (errors) {
       console.error("login failed", errors);
       return { success: false, errors };
     }
-    alert("logged in")
   }
   
     /** Checks if a job has been applied for. */
@@ -104,6 +104,7 @@ useEffect(function loadUserInfo() {
   return (
     <div className="App">
         <BrowserRouter>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, hasAppliedToJob, applyToJob }}>
           <NavBar />
           <main>
             <Switch>
@@ -127,6 +128,7 @@ useEffect(function loadUserInfo() {
               </Route>
             </Switch>
           </main>
+          </UserContext.Provider>
         </BrowserRouter>
     </div>
   );

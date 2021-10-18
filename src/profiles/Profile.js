@@ -5,6 +5,7 @@ import UserContext from "../auth/UserContext";
 
 function Profile () {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { hasAppliedToJob, applyToJob } = useContext(UserContext);
 
     const [formData, setFormData] = useState({
         firstName: currentUser.firstName,
@@ -71,6 +72,7 @@ function Profile () {
     return (
     <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
     <h2>Hello {currentUser.username}</h2>
+    <h4>My applied jobs: {currentUser.hasAppliedToJobs} </h4>
     <h3>Edit Your Profile</h3>
     <div className="card">
       <div className="card-body">
