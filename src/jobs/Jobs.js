@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "../api/api";
 import JobCardList from "./JobCardList";
+import SearchForm from "../common/SearchForm";
 
 import LoadingSpinner from "../common/LoadingSpinner";
 
@@ -23,10 +24,16 @@ function Jobs () {
         setJobs(jobs)
     };
 
+    async function search(title) {
+        let jobs = await JoblyApi.getJobs(title);
+        setJobs(jobs);
+      }
+
     // listJobs();
     
     return(
         <div>
+            <SearchForm searchFor={search} />
             {/* {jobs.length} */}
             <JobCardList jobs={jobs} />
         </div>

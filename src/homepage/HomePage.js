@@ -9,8 +9,8 @@ function HomePage() {
         <div class="jobly-container">
             <h2>Welcome to Jobly</h2>
             <img src={workImg.default} />
-            <button>Log In</button>
-            <button>Sign Up</button>
+            {/* <button>Log In</button>
+            <button>Sign Up</button> */}
         </div>
     );
 };
